@@ -1,0 +1,21 @@
+{% extends 'shared/examCommon.html' %}
+{% block content %}
+{% load static %}
+<div class="row" style="background: #002147;">
+    <div class="col-lg-3 col-sm-2 col-sm-12"></div>
+    <div class="col-lg-6 col-lg-8 col-sm-12 h-75 bg-white">
+        <h1 class="text-center" style="color: #fd6801;">Weakly Test</h1>
+        <div class="row">
+            <div class="col-lg-3 col-sm-2 col-sm-12"></div>
+            <div class="col-lg-6 col-sm-8 col-sm-12">
+                <h3>Total Marks: &nbsp;&nbsp;&nbsp; {{ tq }}</h3>
+                <h3>Obtain Marks: &nbsp; {{ correct }}</h3>
+                <h3 class="btn btn-primary"><a class="text-white" href="stdfeedback">Submit your feedback about this
+                        Test</a></h3>
+            </div>
+            <div class="col-lg-3 col-sm-2 col-sm-12"></div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-sm-2 col-sm-12"></div>
+</div>
+{% endblock %}

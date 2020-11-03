@@ -1,0 +1,95 @@
+{% extends 'shared/admCommon.html' %}
+{% block content %}
+{% load static %}
+{% if msg %}
+<script>
+    alert('{{ msg }}')
+</script>
+{% endif %}
+<!-- Add Upload -->
+<div class="notification">
+    <div class="container">
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-8">
+                <form method="POST" action="/manageupload" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <h1>Upload</h1>
+                    <div class="row">
+                        <div class="col-4 my-3">
+                            <label>File: </label>
+                        </div>
+                        <div class="col-8">
+                            <input class="form-control" type="file" name="doc">
+                        </div>
+                        <div class="col-4">
+                            <label>Categories :</label>
+                        </div>
+                        <div class="col-8">
+                            <select class="form-control" name="cat" id="">
+                                <option value="Assignments">Assignments</option>
+                                <option value="Study Material">Study Material</option>
+                            </select><br>
+                        </div>
+                        <div class="col-4 my-3">
+                            <label>Title: </label>
+                        </div>
+                        <div class="col-8">
+                            <input class="form-control" type="text" name="title" placeholder="Enter title here">
+                        </div>
+                        <div class="col-4 my-3">
+                            <label>Description: </label>
+                        </div>
+                        <div class="col-8">
+                            <textarea class="form-control" type="text" name="des" placeholder="Enter Description here"></textarea><br>
+                        </div>
+                        <div class="col-4"></div>
+                        <div class="col-4">
+                            <button class="btn btn-success w-50" type="submit">Add</button>
+                        </div>
+                        <div class="col-4"></div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-2"></div>
+        </div>
+    </div>
+    <div class="my-4 text-success d-flex justify-content-center">
+        {{ msg }}
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-1"></div>
+            <div class="col-10 my-4 table">
+                <h1>Manage All Uploads</h1>
+                <div class="overflowxaxis">
+                    <table>
+                        <tr>
+                            <th>SN</th>
+                            <th>Category</th>
+                            <th>Title</th>
+                            <th>Description</th>
+                            <th>Upload Date Time</th>
+                            <th>Download</th>
+                            <th>Delete</th>
+                        </tr>
+                        {% for i in data %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ i.category }}</td>
+                            <td>{{ i.title }}</td>
+                            <td>{{ i.description }}</td>
+                            <td>{{ i.dt }}</td>
+                            <td><a class="btn btn-info" href="{{ i.fname }}" download>Download</a></td>
+                            <td><a class="btn btn-danger" href="/delupload?id={{i.id}}">Delete</a></td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+            <div class="col-1"></div>
+        </div>
+    </div>
+</div>
+{% endblock %}

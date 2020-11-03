@@ -1,0 +1,43 @@
+{% extends 'shared/admCommon.html' %}
+{% block content %}
+{% load static %}
+{% if msg %}
+<script>
+    alert('{{ msg }}')
+</script>
+{% endif %}
+<!-- Enquiry -->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-2 col-md-1 col-sm-12"></div>
+        <div class="col-lg-8 col-md-10 col-sm-12 my-4 bg-white">
+            <h2 class="text-center">Manage Feedback</h2>
+            <div class="overflowxaxis">
+                <table class="table">
+                    <tr>
+                        <th>SN</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Mobile Number</th>
+                        <th>Topic</th>
+                        <th>Feedback</th>
+                        <th>Delete</th>
+                    </tr>
+                    {% for i in data %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ i.name }}</td>
+                        <td>{{ i.email }}</td>
+                        <td>{{ i.mobno }}</td>
+                        <td>{{ i.topic }}</td>
+                        <td>{{ i.feedback }}</td>
+                        <td><a class="btn btn-danger" href="/delfeedback?id={{i.id}}">Delete</a></td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+        <div class="col-lg-2 col-md-1 col-sm-12"></div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,125 @@
+/* Google Fonts */
+@import url(https://fonts.googleapis.com/css?family=Roboto);
+body {
+  font-family: "Roboto", serif;
+}
+.header-area {
+  background: linear-gradient(to right, #a64eee, #3c35ce);
+}
+
+nav ul li a:after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%) scaleX(0);
+  transform-origin: 50%;
+  width: 100%;
+  height: 2px;
+  background-color: rgba(255, 255, 255, 0.9);
+  transition: transform 250ms;
+}
+
+nav ul li a:hover::after {
+  transform: translateX(-50%);
+}
+
+.header-area .contact-number {
+  margin: 0 1%;
+  padding: 1%;
+  width: 15%;
+  text-align: center;
+  border-radius: 50px;
+}
+
+.aboutimg {
+  margin-top: 5%;
+  height: 50vh;
+  width: 100%;
+}
+.aboutpara {
+  margin-top: 10%;
+  width: 100%;
+  /* height: 50vh; */
+  text-align: justify;
+}
+.contact .map {
+  border: 2px solid black;
+  border-radius: 20px;
+  margin-top: 5%;
+  width: 100%;
+}
+.contact .section ul{
+  list-style: none;
+}
+.contact .section ul li {
+  margin: 15% 0;
+}
+marquee a {
+  font-size: 20px;
+  color: white;
+}
+marquee img {
+  height: 15px;
+  width: 15x;
+}
+h1 {
+  font-size: 30px;
+}
+label {
+  font-size: 20px;
+  margin: 2% 2%;
+}
+.bg{
+  background: url('../img/registerbg.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding-top: 5%;
+}
+.register {
+  margin: 0 25%;
+  padding: 5% 8%;
+  width: 50%;
+  border-radius: 20px;
+  background: black;
+  opacity: 0.9;
+  color: #ecb21d;
+
+}
+@media (max-width: 768px) {
+  .register {
+    margin: 4%;
+    width: 90%;
+  }
+}
+@media (max-width: 492px) {
+  .register {
+    margin: 5% 0 0 5%;
+    width: 90%;
+  }
+}
+.enquiry button {
+  position: fixed;
+  padding: 10px;
+  width: auto;
+  top: 300px;
+  font-size: 24px;
+  left: -25px;
+  transform: rotate(-90deg);
+}
+.enquiry-form {
+  position: fixed;
+  top: 10%;
+  width: 60%;
+  height: 80%;
+  z-index: 1;
+  padding: 10px;
+  background: #fff;
+  color: black;
+  display: none;
+  border: 2px solid #6b40dc;
+  border-radius: 10px;
+  text-align: center;
+  transition: 1s;
+}

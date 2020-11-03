@@ -1,0 +1,48 @@
+{% extends 'shared/stdCommon.html' %}
+{% block content %}
+{% load static %}
+{% if msg %}
+<script>
+    alert('{{ msg }}')
+</script>
+{% endif %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3 col-md-2 col-sm-12"></div>
+        <div class="col-lg-6 col-md-8 col-sm-12 bg-white">
+            <h1 class="py-4 text-center">Discussion Forum </h1>
+            <form action="/questionupload" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label>Enter Your Question Here</label>
+                    <input type="text" class="form-control" name="question" placeholder="Enter your question here."
+                        required>
+                </div>
+                <label>File:</label>
+                <input type="file" class="form-control" name="img">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+        <div class="col-lg-3 col-md-2 col-sm-12"></div>
+    </div>
+</div>
+<br><br>
+
+{% for i in data %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-2 col-md-1 col-sm-12"></div>
+        <div class="col-lg-8 col-md-10 col-sm-12 bg-white py-2">
+            <span>{{ forloop.counter }}:- </span><b> {{ i.question }} </b> <br>
+            <span>User:- </span>{{ i.email }}<br>
+                {{ i.dt }} <br>
+                <img src="{{ i.imgname }}" style="height: 60vh; width: 100%" alt=""><br>
+                <a href="/reply?qid={{i.id}}">Reply</a>&nbsp;&nbsp;&nbsp;
+                <a href="/viewanswer?qid={{i.id}}">View Answer</a>
+        </div>
+        <div class="col-lg-2 col-md-1 col-sm-12"></div>
+    </div>
+</div>
+<hr>
+{% endfor %}
+{% endblock %}

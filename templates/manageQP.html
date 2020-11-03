@@ -1,0 +1,58 @@
+{% extends 'shared/admCommon.html' %}
+{% block content %}
+{% load static %}
+{% if msg %}
+<script>
+    alert('{{ msg }}')
+</script>
+{% endif %}
+<!-- Manage Question Paper -->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-2 col-md-1 col-sm-12"></div>
+        <div class="col-lg-8 col-md-10 col-sm-12 bg-white">
+            <h3 class="text-center">Manage Question Paper</h3>
+            <div class="overflowxaxis">
+                <form action="/setqp" method="POST">
+                    {% csrf_token %}
+                    <table class="table">
+                        <tr>
+                            <th>SN</th>
+                            <th>Subject</th>
+                            <th>Date</th>
+                            <th>Time</th>
+                            <th>Upload Date Time</th>
+                            <th>Total Question</th>
+                            <th>Status</th>
+                            <th>Update</th>
+                            <th>Delete</th>
+                        </tr>
+                        {% for i in data %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ i.subject }}</td>
+                            <td>{{ i.date }}</td>
+                            <td>{{ i.time }}</td>
+                            <td>{{ i.udt }}</td>
+                            <td>{{ i.tq }}</td>
+                            <td>{{ i.status }}</td>
+                            <td><input type="radio" name="change" value="{{ i.paperid }}" required></td>
+                            <td><a class="btn btn-danger" href="/delqp?id={{i.paperid}}">Delete</a></td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                    <div class="row">
+                        <div class="col-4"></div>
+                        <div class="col-4">
+                            <button class="btn btn-info">Save</button>
+                        </div>
+                        <div class="col-4"></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-lg-2 col-md-1 col-sm-12"></div>
+    </div>
+</div>
+</div>
+{% endblock %}

@@ -1,0 +1,135 @@
+{% extends 'shared/stdCommon.html' %}
+{% block content %}
+{% load static %}
+<!-- Cards -->
+<div class="container">
+  <div class="row">
+    <div class="col-lg-4 col-md-4 col-sm-12">
+      <div class="card bg-primary mx-2">
+        <div class="card-body text-white my-4">
+          <a href="/stddiscussion" class="card-title">
+            <div class="row">
+              <div class="col-4"></div>
+              <div class="col-4 my-1"> <i class="material-icons dashboard-icon">chat</i> </div>
+              <div class="col-4"></div>
+              <div class="col-12 my-2"><span> Discussion </span></div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-12">
+      <div class="card bg-info mx-2">
+        <div class="card-body text-white my-4">
+          <a href="/submitassignment" class="card-title">
+            <div class="row">
+              <div class="col-4"></div>
+              <div class="col-4 my-1"> <i class="material-icons dashboard-icon">assignment_returned</i> </div>
+              <div class="col-4"></div>
+              <div class="col-12 my-2"><span> Submit Task </span></div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-12">
+      <div class="card bg-warning mx-2">
+        <div class="card-body text-white my-4">
+          <a href="/examrules" class="card-title">
+            <div class="row">
+              <div class="col-4"></div>
+              <div class="col-4 my-1"> <i class="material-icons dashboard-icon">assessment</i> </div>
+              <div class="col-4"></div>
+              <div class="col-12 my-2"><span> Weakly Test </span></div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-12">
+      <div class="card bg-danger mx-2">
+        <div class="card-body text-white my-4">
+          <a href="/studymaterial" class="card-title">
+            <div class="row">
+              <div class="col-4"></div>
+              <div class="col-4 my-1"> <i class="material-icons dashboard-icon">menu_book</i> </div>
+              <div class="col-4"></div>
+              <div class="col-12 my-2"><span> Study Material </span></div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-12">
+      <div class="card bg-secondary mx-2">
+        <div class="card-body text-white my-4">
+          <a href="/assignments" class="card-title">
+            <div class="row">
+              <div class="col-4"></div>
+              <div class="col-4 my-1"> <i class="material-icons dashboard-icon">assignment</i> </div>
+              <div class="col-4"></div>
+              <div class="col-12 my-2"><span> Assignments </span></div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-12">
+      <div class="card bg-success mx-2">
+        <div class="card-body text-white my-4">
+          <a href="/stdfeedback" class="card-title">
+            <div class="row">
+              <div class="col-4"></div>
+              <div class="col-4 my-1"> <i class="material-icons dashboard-icon">feedback</i> </div>
+              <div class="col-4"></div>
+              <div class="col-12 my-2"><span> Feedback </span></div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-12">
+      <div class="card bg-dark mx-2">
+        <div class="card-body text-white my-4">
+          <a href="/changepassword" class="card-title">
+            <div class="row">
+              <div class="col-4"></div>
+              <div class="col-4 my-1"> <i class="material-icons dashboard-icon">vpn_key</i> </div>
+              <div class="col-4"></div>
+              <div class="col-12 my-2"><span> Change Password </span></div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-12">
+      <div class="card bg-warning mx-2">
+        <div class="card-body text-white my-4">
+          <a href="/updateprofile" class="card-title">
+            <div class="row">
+              <div class="col-4"></div>
+              <div class="col-4 my-1"> <i class="material-icons dashboard-icon">person</i> </div>
+              <div class="col-4"></div>
+              <div class="col-12 my-2"><span> User Profile </span></div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-12">
+      <div class="card bg-danger mx-2">
+        <div class="card-body text-white my-4">
+          <a href="/logout" class="card-title">
+            <div class="row">
+              <div class="col-4"></div>
+              <div class="col-4 my-1"> <i class="fa fa-sign-out dashboard-icon"></i> </div>
+              <div class="col-4"></div>
+              <div class="col-12 my-2"><span> Logout </span></div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

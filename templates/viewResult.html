@@ -1,0 +1,38 @@
+{% extends 'shared/admCommon.html' %}
+{% block content %}
+{% load static %}
+<!-- Add Notifications -->
+<div class="notification">
+    <div class="container">
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-1"></div>
+            <div class="col-10 my-4 table">
+                <h1>View Result</h1>
+                <div class="overflowxaxis">
+                    <table>
+                        <tr>
+                            <th>SN</th>
+                            <th>Name</th>
+                            <th>E-mail</th>
+                            <th>Total Marks</th>
+                            <th>Obtain Marks:</th>
+                        </tr>
+                        {% for i in data %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ i.name }}</td>
+                            <td>{{ i.email }}</td>
+                            <td>{{ i.tq }}</td>
+                            <td>{{ i.correct }}</td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+            <div class="col-1"></div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'shared/base.html' %}
+{% block content %}
+{% if msg %}
+<script>
+    alert('{{ msg }}')
+</script>
+{% endif %}
+<div class="bg-login">
+    <div class="container login">
+        <b><h1>Forget Password</h1></b>
+        <form action="/forgetvarify" method="POST">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-4">
+                    <label>OTP</label>
+                </div>
+                <div class="col-8">
+                    <input class="form-control" name="uotp" type="password" placeholder="Enter OTP here."><br>
+                </div>
+            </div>
+            <input type="hidden" name="email" value="{{ email }}">
+            <a href="/registration">Back to Login</a><br>
+            <button type="submit">Varify</button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

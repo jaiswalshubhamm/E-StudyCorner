@@ -1,0 +1,81 @@
+{% extends 'shared/admCommon.html' %}
+{% block content %}
+{% load static %}
+{% if msg %}
+<script>
+    alert('{{ msg }}')
+</script>
+{% endif %}
+<!-- Send Email -->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3 col-md-2 col-sm-12"></div>
+        <div class="col-lg-6 col-md-8 col-sm-12 bg-white">
+            <form method="POST" action="/sendemail">
+                {% csrf_token %}
+                <h2 class="text-center">Send Email</h2>
+                <div class="row">
+                    <div class="col-4 my-3">
+                        <label>To:</label>
+                    </div>
+                    <div class="col-8">
+                        <input class="form-control" name="to" class="form-control" type="text" placeholder="Enter reciever E-Mail here"
+                            required>
+                    </div>
+                    <div class="col-4 my-3">
+                        <label>Subject:</label>
+                    </div>
+                    <div class="col-8">
+                        <input class="form-control" name="subject" type="text" placeholder="Enter Subject" required>
+                    </div>
+                    <div class="col-4">
+                        <label>Enter Mail-Text:</label>
+                    </div>
+                    <div class="col-8">
+                        <textarea name="mail-msg" class="form-control" type="text" placeholder="Enter Notification"
+                            required></textarea><br>
+                    </div>
+                    <div class="col-4"></div>
+                    <div class="col-4">
+                        <button class="btn btn-primary" type="submit">Send</button>
+                    </div>
+                    <div class="col-4"></div>
+                </div>
+            </form>
+        </div>
+        <div class="col-lg-3 col-md-2 col-sm-12"></div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-2 col-md-1 col-sm-12"></div>
+        <div class="col-lg-8 col-md-10 col-sm-12 my-4 bg-white">
+            <div class="overflowxaxis">
+                <h2 class="text-center"> All Email</h2>
+                <table class="table">
+                    <tr>
+                        <th>SN</th>
+                        <th>To</th>
+                        <th>Subject</th>
+                        <th>Text</th>
+                        <th>Date Time</th>
+                        <th>Delete</th>
+                    </tr>
+                    {% for i in data %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ i.to }}</td>
+                        <td>{{ i.subject }}</td>
+                        <td>{{ i.txt }}</td>
+                        <td>{{ i.dt }}</td>
+                        <td><a class="btn btn-danger" href="/delemail?id={{i.id}}">Delete</a></td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+        <div class="col-lg-2 col-md-1 col-sm-12"></div>
+    </div>
+</div>
+{% endblock %}

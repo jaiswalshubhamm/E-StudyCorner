@@ -1,0 +1,98 @@
+{% extends 'shared/stdCommon.html' %}
+{% block content %}
+{% if msg %}
+<script>
+    alert('{{ msg }}')
+</script>
+{% endif %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3 col-md-1 col-sm-12"></div>
+        <div class="col-lg-6 col-md-10 col-sm-12 bg-white">
+                {% for i in data %}
+                <h3 class="text-center">Profile</h1><br>
+                    <div class="row">
+                        <div class="col-4"></div>
+                        <div class="col-4">
+                            <img class="rounded" src="{{ i.picture }}" style="height: 100px; width: 100px;background: black;" alt="">
+                        </div>
+                        <div class="col-4"></div>
+                    </div>
+                <br><br>
+                <form action="/updateprofile" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-4 my-3">
+                            <label>Name:</label>
+                        </div>
+                        <div class="col-8">
+                            <input type="text" class="form-control" name="name" value="{{ i.name }}" required>
+                        </div>
+                        <div class="col-4 my-3">
+                            <label>Gender:</label>
+                        </div>
+                        {% if 'Male' in i.gender %}
+                        <div class="col-8 my-3">
+                            <label>Male</label>
+                            <input class="radio" type="radio" name="gender" checked value="Male">
+                            <label>Female</label>
+                            <input class="radio" type="radio" name="gender" value="Female"><br>
+                        </div>
+                        {% else %}
+                        <div class="col-8 my-3">
+                            <label>Male</label>
+                            <input class="radio" type="radio" name="gender" value="Male">
+                            <label>Female</label>
+                            <input class="radio" type="radio" name="gender" checked value="Female"><br>
+                        </div>
+                        {% endif %}
+                        <div class="col-4 my-3">
+                            <label>DOB:</label>
+                        </div>
+                        <div class="col-8">
+                            <input type="date" class="form-control" name="dob" value="{{ i.dob }}">
+                        </div>
+                        <div class="col-4 my-3">
+                            <label>Email:</label>
+                        </div>
+                        <div class="col-8">
+                            <input type="email" class="form-control" name="email" value="{{ i.email }}">
+                        </div>
+                        <div class="col-4 my-3">
+                            <label>Mobile Number:</label>
+                        </div>
+                        <div class="col-8">
+                            <input type="number" name="mobno" class="form-control" value="{{ i.mobno }}">
+                        </div>
+                        <div class="col-4 my-3">
+                            <label>Profile Picture:</label>
+                        </div>
+                        <div class="col-8">
+                            <input type="hidden" name="imgh" value="{{ i.picture }}">
+                            <input type="file" name="img" class="form-control">
+                        </div>
+                        <div class="col-4 my-3">
+                            <label>Address:</label>
+                        </div>
+                        <div class="col-8">
+                            <input type="text" class="form-control" name="address" value="{{ i.address }}">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2"></div>
+                        <div class="col-4">
+                                <button class="btn btn-primary" type="submit">Update</button>
+                        </div>
+                        <div class="col-4">
+                                <button class="btn btn-success"  type="reset">Reset</button>
+                        </div>
+                        <div class="col-2"></div>
+                    </div><br>
+                </form>
+                {% endfor %}
+        </div>
+        <div class="col-lg-3 col-md-1 col-sm-12"></div>
+    </div>
+</div><br><br>
+
+{% endblock %}

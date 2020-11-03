@@ -1,0 +1,78 @@
+{% extends 'shared/stdCommon.html' %}
+{% block content %}
+{% load static %}
+{% if msg %}
+<script>
+    alert('{{ msg }}')
+</script>
+{% endif %}
+<!-- Submit Assignments -->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3 col-md-2 col-sm-12"></div>
+        <div class="col-lg-6 col-md-8 col-sm-12 bg-white">
+            <form method="POST" action="/submitassignment" enctype="multipart/form-data">
+                {% csrf_token %}
+                <h3 class="text-center">Submit Task/Assignment</h1>
+                    <div class="row">
+                        <div class="col-4 my-3">
+                            <label>File: </label>
+                        </div>
+                        <div class="col-8">
+                            <input class="form-control" type="file" name="doc">
+                        </div>
+                        <div class="col-4 my-3">
+                            <label>Title: </label>
+                        </div>
+                        <div class="col-8">
+                            <input class="form-control" type="text" name="title" placeholder="Enter title here">
+                        </div>
+                        <div class="col-4 my-3">
+                            <label>Description: </label>
+                        </div>
+                        <div class="col-8">
+                            <textarea class="form-control" type="text" name="des"
+                                placeholder="Enter Description here"></textarea><br>
+                        </div>
+                        <div class="col-4"></div>
+                        <div class="col-4">
+                            <button class="btn btn-success" type="submit">Add</button>
+                        </div>
+                        <div class="col-4"></div>
+                    </div>
+            </form>
+        </div>
+        <div class="col-lg-3 col-md-2 col-sm-12"></div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-1 col-md-1 col-sm-12"></div>
+        <div class="col-lg-10 col-md-10 col-sm-12 my-4 bg-white">
+            <h3 class="text-center">Uploaded Tasks/Assignments</h3>
+            <div class="overflowxaxis">
+                <table class="table">
+                    <tr>
+                        <th>SN</th>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Upload Date Time</th>
+                        <th>Download</th>
+                    </tr>
+                    {% for i in data %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ i.title }}</td>
+                        <td>{{ i.description }}</td>
+                        <td>{{ i.dt }}</td>
+                        <td><a class="btn btn-primary" href="{{ i.doc }}" download>Download</a></td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+        <div class="col-lg-1 col-md-1 col-sm-12"></div>
+    </div>
+</div>
+{% endblock %}

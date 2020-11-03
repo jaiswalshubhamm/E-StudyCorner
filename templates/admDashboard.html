@@ -1,0 +1,156 @@
+{% extends 'shared/admCommon.html' %}
+{% block content %}
+{% load static %}
+{% if msg %}
+<script>
+  alert('{{ msg }}')
+</script>
+{% endif %}
+<!-- Cards -->
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-4 col-md-4 col-sm-12">
+      <div class="card bg-primary mx-0">
+        <div class="card-body text-white my-4">
+          <a href="/admdiscussion" class="card-title">
+            <div class="container">
+              <div class="row">
+                <div class="col-4"></div>
+                <div class="col-4 my-1"> <i class="material-icons dashboard-icon">chat</i> </div>
+                <div class="col-4"></div>
+                <div class="col-12 my-2"><span> Discussion </span></div>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-12">
+      <div class="card bg-info mx-0">
+        <div class="card-body text-white my-4">
+          <a href="/admnotification" class="card-title">
+            <div class="row">
+              <div class="col-4"></div>
+              <div class="col-4 my-1"> <i class="material-icons dashboard-icon">notifications_active</i> </div>
+              <div class="col-4"></div>
+              <div class="col-12 my-2"><span> Manage Notification </span></div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-12">
+      <div class="card bg-warning mx-0">
+        <div class="card-body text-white my-4">
+          <a href="/admenquiry" class="card-title">
+            <div class="row">
+              <div class="col-4"></div>
+              <div class="col-4 my-1"> <i class="material-icons dashboard-icon">contact_mail</i> </div>
+              <div class="col-4"></div>
+              <div class="col-12 my-2"><span> Manage Enquiry </span></div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-12">
+      <div class="card bg-danger mx-0">
+        <div class="card-body text-white my-4">
+          <a href="/admfeedback" class="card-title">
+            <div class="row">
+              <div class="col-4"></div>
+              <div class="col-4 my-1"> <i class="material-icons dashboard-icon">feedback</i> </div>
+              <div class="col-4"></div>
+              <div class="col-12 my-2"><span> Manage Feedback </span></div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-12">
+      <div class="card bg-secondary mx-0">
+        <div class="card-body text-white my-4">
+          <a href="/addqp" class="card-title">
+            <div class="row">
+              <div class="col-4"></div>
+              <div class="col-4 my-1"> <i class="material-icons dashboard-icon">feedback</i> </div>
+              <div class="col-4"></div>
+              <div class="col-12 my-2"><span> Add Question Paper </span></div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-12">
+      <div class="card bg-primary mx-0">
+        <div class="card-body text-white my-4">
+          <a href="/manageqp" class="card-title">
+            <div class="row">
+              <div class="col-4"></div>
+              <div class="col-4 my-1"> <i class="material-icons dashboard-icon">question_answer</i> </div>
+              <div class="col-4"></div>
+              <div class="col-12 my-2"><span> Manage Question Paper </span></div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card bg-success mx-0">
+        <div class="card-body text-white my-4">
+          <a href="/sendemail" class="card-title">
+            <div class="row">
+              <div class="col-4"></div>
+              <div class="col-4 my-1"> <i class="material-icons dashboard-icon">send</i> </div>
+              <div class="col-4"></div>
+              <div class="col-12 my-2"><span> Send Email </span></div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card bg-dark mx-0">
+        <div class="card-body text-white my-4">
+          <a href="/sendsms" class="card-title">
+            <div class="row">
+              <div class="col-4"></div>
+              <div class="col-4 my-1"> <i class="material-icons dashboard-icon">textsms</i> </div>
+              <div class="col-4"></div>
+              <div class="col-12 my-2"><span> Send SMS </span></div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card bg-warning mx-0">
+        <div class="card-body text-white my-4">
+          <a href="/admprofile" class="card-title">
+            <div class="row">
+              <div class="col-4"></div>
+              <div class="col-4 my-1"> <i class="material-icons dashboard-icon">person</i> </div>
+              <div class="col-4"></div>
+              <div class="col-12 my-2"><span> Admin Profile </span></div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card bg-danger mx-0">
+        <div class="card-body text-white my-4">
+          <a href="/changeadmpassword" class="card-title">
+            <div class="row">
+              <div class="col-4"></div>
+              <div class="col-4 my-1"> <i class="material-icons dashboard-icon">vpn_key</i> </div>
+              <div class="col-4"></div>
+              <div class="col-12 my-2"><span> Change Password </span></div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

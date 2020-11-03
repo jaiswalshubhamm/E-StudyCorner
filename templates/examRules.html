@@ -1,0 +1,40 @@
+{% extends 'shared/examCommon.html' %}
+{% block content %}
+{% load static %}
+<div class="row" style="background: #002147;">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8">
+        <h1 style="color: #fd6801;">Rules for this exam</h1>
+        <form action="test">
+            <label class="text-white">
+                <h3><u>Technical Rules</u>:-</h3>
+                <ul>
+                    <li>Please don't disconnect or turn off wi-fi during the exam.</li>
+                    <li>If displayed picture, roll number and name is not your then immediately consult teacher or
+                        admin.</li>
+                    <li>You are not supposed to click any button on your CPU or Monitor while examination.</li>
+                </ul>
+                <h3><u>Exam Rules</u>:-</h3>
+                <ul>
+                    <li>Number of questions are 20 and the time limit is 20 minutes.</li>
+                    <li>Each question carries: 1 Mark and no negative marking.</li>
+                    <li>Please dont't open any new tab or dont't use refresh button or change the URL of current page
+                        otherwise you will lost your exam Session and you may fail.</li>
+                    <li>While writing the answers for fill in the blanks type of questions it is must required that
+                        spelling you enter are accurate.</li>
+                    <li>Any kind of resource material or your mobile phone are strictly prohibited during exam.</li>
+                    <li>When your exam is completed click Submit.</li>
+                </ul>
+                <h3><u>Result</u>:-</h3>
+                <ul>
+                    <li>After a few minutes your result will be displayed on your respective system.</li>
+                </ul>
+                <input type="checkbox" id="Chk" required="required">
+                <span style="font-weight:bold ;">I Agree with Instructions &amp; Rules of this Exam</span>
+            </label><br><br>
+            <button class="btn btn-success" type="submit">Start Test</button><br /><br />
+        </form>
+    </div>
+    <div class="col-sm-2"></div>
+</div>
+{% endblock %}

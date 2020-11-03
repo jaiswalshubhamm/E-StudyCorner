@@ -1,0 +1,43 @@
+{% extends 'shared/admCommon.html' %}
+{% block content %}
+{% load static %}
+{% if msg %}
+<script>
+    alert('{{ msg }}')
+</script>
+{% endif %}
+<!-- Submitted Assignments -->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-2 col-md-1 col-sm-12"></div>
+        <div class="col-lg-8 col-md-10 col-sm-12 my-4 bg-white">
+            <h2 class="text-center">Submitted Tasks/Assignments</h2>
+            <div class="overflowxaxis">
+                <table class="table">
+                    <tr>
+                        <th>SN</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Upload Date Time</th>
+                        <th>Download</th>
+                    </tr>
+                    {% for i in data %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ i.name }}</td>
+                        <td>{{ i.email }}</td>
+                        <td>{{ i.title }}</td>
+                        <td>{{ i.description }}</td>
+                        <td>{{ i.dt }}</td>
+                        <td><a class="btn btn-info" href="{{ i.fname }}" download>Download</a></td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+        <div class="col-lg-2 col-md-1 col-sm-12"></div>
+    </div>
+</div>
+{% endblock %}

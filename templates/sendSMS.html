@@ -1,0 +1,73 @@
+{% extends 'shared/admCommon.html' %}
+{% block content %}
+{% load static %}
+{% if msg %}
+<script>
+    alert('{{ msg }}')
+</script>
+{% endif %}
+<!-- Send Email -->
+<div class="sendemail">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-2 col-sm-12"></div>
+            <div class="col-lg-6 col-md-8 col-sm-12 bg-white">
+                <form method="POST" action="/sendsms">
+                    {% csrf_token %}
+                    <h3 class="text-center">Send SMS </h3>
+                    <div class="row">
+                        <div class="col-4 my-3">
+                            <label>Mobile Number:</label>
+                        </div>
+                        <div class="col-8">
+                            <input class="form-control" name="mobno" type="text" placeholder="Enter Mobile Numbers" required>
+                        </div>
+                        <div class="col-4">
+                            <label>Message:</label>
+                        </div>
+                        <div class="col-8">
+                            <textarea class="form-control" name="msg" type="text" placeholder="Enter Message" required></textarea><br>
+                        </div>
+                        <div class="col-4"></div>
+                        <div class="col-4">
+                            <button class="btn btn-primary" type="submit">Send</button>
+                        </div>
+                        <div class="col-4"></div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-lg-3 col-md-2 col-sm-12"></div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-2 col-md-1 col-sm-12"></div>
+            <div class="col-lg-8 col-md-10 col-sm-12 my-4 bg-white">
+                <h3 class="text-center">All SMS</h3>
+                <div class="overflowxaxis">
+                    <table class="table">
+                        <tr>
+                            <th>SN</th>
+                            <th>Mobile Number</th>
+                            <th>SMS</th>
+                            <th>Date Time</th>
+                            <th>Delete</th>
+                        </tr>
+                        {% for i in data %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ i.mobno }}</td>
+                            <td>{{ i.msg }}</td>
+                            <td>{{ i.dt }}</td>
+                            <td><a class="btn btn-danger" href="/delsms?id={{i.id}}">Delete</a></td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+            <div class="col-lg-1 col-md-1 col-sm-12"></div>
+        </div>
+    </div>
+</div>
+{% endblock %}

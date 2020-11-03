@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  <!-- JQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <!-- Font-Awesome CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- Material Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+  <!--Start of Tawk.to Script-->
+  <script type="text/javascript">
+    var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+    (function () {
+      var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+      s1.async = true;
+      s1.src = 'https://embed.tawk.to/5f0dbdc95b59f94722bab458/default';
+      s1.charset = 'UTF-8';
+      s1.setAttribute('crossorigin', '*');
+      s0.parentNode.insertBefore(s1, s0);
+    })();
+  </script>
+  <!--End of Tawk.to Script-->
+  {% load static %}
+  <link rel="stylesheet" href="{% static '/css/style.css' %}">
+  <link rel="stylesheet" href="{% static '/css/material-kit.min.css' %}">
+
+  <title>E-Study Corner</title>
+  <style>
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <div class="container-fluid">
+    <nav class="navbar navbar-expand-lg bg-primary header-area">
+      <a class="navbar-brand mx-3" href="/"><img src="{% static '/img/logo.png'%}" alt=""></a>
+      <div class="container">
+        <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+          aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="navbar-toggler-icon"></span>
+          <span class="navbar-toggler-icon"></span>
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" href="/"><i class="fa fa-home"></i> Home<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/contact"><i class="fa fa-phone"></i> Contact Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#"><i class="fa fa-download"></i> Download</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/about">About</a>
+            </li>
+          </ul>
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link mx-1" href="/registration"><i class="fa fa-user"></i>Register</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link mx-1" href="/login"><i class="fa fa-sign-in"></i>Login</a>
+            </li>
+          </ul>
+          <div class="contact-number bg-warning"><i class="fa fa-phone"> +91 885 831 2336</i></div>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <!-- Notification Bar -->
+  {% if notification %}
+  <div class="container-fluid">
+    <div class="alert alert-warning py-1 my-0" role="alert">
+      <marquee behavior="" direction="">
+        {% for i in notification %}
+        <img src="{% static 'img/star.png'%}" alt="" />
+        <a href="{{ i.link }}">
+          {{ i.notification }}
+        </a>&nbsp;&nbsp;&nbsp;
+        {% endfor %}
+      </marquee>
+    </div>
+  </div>
+  {% endif %}
+
+  {% block content %}
+  {% endblock %}
+  <div class="jumbotron jumbotron-fluid bg-info text-white" style="padding: 5px">
+    <div class="container">
+      <h1 class="display-4">Subscribe to our Newsletter</h1>
+      <div class="row">
+        <div class="col-lg-6 col-sm-12">
+          <h4>Subscribe to our Newsletter</h4>
+        </div>
+        <div class="col-lg-6 col-sm-12">
+          <form action="#">
+            <div class="row">
+              <input class="col-7" type="text" placeholder="Enter your mail">
+              <button class="btn-warning p-2 btn-lg text-white col-3" type="submit">Subscribe</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <!-- Footer -->
+  <footer class="page-footer font-small text-white" style="background: #3f51b5;">
+    <!-- Footer Links -->
+    <div class="container">
+      <div class="row text-center d-flex justify-content-center pt-3 mb-2">
+        <div class="col-md-2 mb-2">
+          <h6 class="text-uppercase">
+            <a class="text-white" href="/about">About us</a>
+          </h6>
+        </div>
+        <div class="col-md-2 mb-2">
+          <h6 class="text-uppercase">
+            <a class="text-white" href="/about">Our Vision & Mission</a>
+          </h6>
+        </div>
+        <div class="col-md-2 mb-2">
+          <h6 class="text-uppercase font-weight-bold">
+            <a class="text-white" href="/registration">Register</a>
+          </h6>
+        </div>
+        <div class="col-md-2 mb-2">
+          <h6 class="text-uppercase font-weight-bold">
+            <a class="text-white" href="/login">Login</a>
+          </h6>
+        </div>
+        <div class="col-md-2 mb-2">
+          <h6 class="text-uppercase font-weight-bold">
+            <a class="text-white" href="/contact">Contact</a>
+          </h6>
+        </div>
+      </div>
+      <hr class="rgba-white-light" style="margin: 0 15%;">
+      <div class="row d-flex text-center justify-content-center mb-md-0 mb-4">
+        <div class="col-md-8 col-12 mt-5">
+          <p style="line-height: 1.7rem">
+            Join us on the mission to deliver best learning experience to students. E-Study-Corner delivers
+            highly efficient and innovative education and solutions with partner Kamadgiri Software Soliutions.</p>
+        </div>
+      </div>
+      <hr class="clearfix d-md-none rgba-white-light" style="margin: 10% 15% 5%;">
+      <div class="row pb-3">
+        <div class="col-md-12">
+          <div class="mb-5 flex-center">
+            <a><i class="fa fa-facebook fa-lg mr-4"> </i></a>
+            <a><i class="fa fa-twitter fa-lg mr-4"> </i></a>
+            <a><i class="fa fa-google-plus fa-lg mr-4"> </i></a>
+            <a><i class="fa fa-linkedin fa-lg mr-4"> </i></a>
+            <a><i class="fa fa-instagram fa-lg mr-4"> </i></a>
+            <a><i class="fa fa-pinterest fa-lg mr-4"> </i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Footer Links -->
+  </footer>
+  <!-- Copyright -->
+  <div class="footer-copyright text-center text-white py-2" style="background: #324191">© 2020 Copyright:
+    <a class="text-warning" href="#"> Shubham Jaiswal </a>
+  </div>
+  <!-- Copyright -->
+  <!-- Material Kit JavaScript -->
+  <script src="{% static '/js/material-kit.min.js' %}"></script>
+  
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

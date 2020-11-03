@@ -1,0 +1,32 @@
+{% extends 'shared/base.html' %}
+{% block content %}
+<script>
+    function validateForm() {
+        var x = document.getElementById('newPassword').value;
+        var y = document.getElementById('confirmNewPassword').value;
+        if (x != y) {
+            alert("Password did not match.");
+            return false;
+        }
+    }
+</script>
+{% if msg %}
+<script>
+    alert('{{ msg }}')
+</script>
+{% endif %}
+<div class="bg-login">
+    <div class="container login">
+        <b><h1>Forget Password</h1></b>
+        <form action="/newpass" method="POST">
+            {% csrf_token %}
+            <input name="newpwd" type="password" placeholder="Enter your new password"><br>
+            <input name="cnfnewpwd" type="password" placeholder="Confirm New password"><br>
+            <a href="/login">Back to Login</a><br>
+            <button type="submit">Set Password</button>
+            <input name="email" type="hidden" value="{{email}}"><br>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

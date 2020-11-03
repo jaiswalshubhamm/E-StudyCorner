@@ -1,0 +1,67 @@
+{% extends 'shared/stdCommon.html' %}
+{% block content %}
+{% load static %}
+{% if msg %}
+<script>
+    alert('{{ msg }}')
+</script>
+{% endif %}
+
+
+<div class="feedback">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-2 col-sm-12"></div>
+            <div class="col-lg-6 col-md-8 col-sm-12 bg-white">
+                <form action="/stdfeedback" method="POST">
+                    {% csrf_token %}
+                    <h2 class="my-3 text-center">Feedback</h2>
+                    <div class="row">
+                        <div class="col-4 my-3">
+                            <label>Name:</label>
+                        </div>
+                        <div class="col-8">
+                            <input name="name" class="form-control" type="text" placeholder="Name" required>
+                        </div>
+                        <div class="col-4 my-3">
+                            <label>Email:</label>
+                        </div>
+                        <div class="col-8">
+                            <input name="email" class="form-control" type="email" placeholder="E-Mail" required>
+                        </div>
+                        <div class="col-4 my-3">
+                            <label>Contact Number:</label>
+                        </div>
+                        <div class="col-8">
+                            <input name="contactnumber" class="form-control" type="text" placeholder="Contact Number"
+                                required>
+                        </div>
+                        <div class="col-4 my-3">
+                            <label>Subject:</label>
+                        </div>
+                        <div class="col-8">
+                            <input name="topic" class="form-control" type="text" placeholder="Enter Subject" required>
+                        </div>
+                        <div class="col-4 my-3">
+                            <label>Feedback:</label>
+                        </div>
+                        <div class="col-8">
+                            <textarea class="form-control" rows="2" name="feedback" type="text"
+                                placeholder="Enter Feedback" required></textarea>
+                        </div>
+                    </div><br>
+                    <div class="row">
+                        <div class="col-3"></div>
+                        <div class="col-6">
+                                <button class="text-center btn btn-primary w-75" type="submit">Add</button>
+                        </div>
+                        <div class="col-3"></div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-lg-3 col-md-2 col-sm-12"></div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

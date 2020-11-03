@@ -1,0 +1,61 @@
+{% extends 'shared/admCommon.html' %}
+{% block content %}
+{% load static %}
+{% if msg %}
+<script>
+    alert('{{ msg }}')
+</script>
+{% endif %}
+<div class="discussion">
+    <div class="row">
+        <div class="col-3"></div>
+        <div class="col-6">
+            <h1>Insert Questions </h1>
+            <form action="/insertq" method="POST" enctype="multipart/form-data">
+                <input type="hidden" name="qpid" value={{qpid}}>
+                <input type="hidden" name="totalquestion" value={{totalquestion}}>
+                {% csrf_token %}
+                {% for i in tq %}
+                <br>
+                <label>Questions: </label><br> &nbsp;&nbsp;&nbsp;&nbsp;
+                <textarea rows="1" type="text" name="question{{i}}" placeholder="Enter Question Here" required></textarea><br>
+                <label>A:</label> &nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="text" name="a{{i}}" placeholder="Enter option A" required><br>
+                <label>B:</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="text" name="b{{i}}" placeholder="Enter option B" required><br>
+                <label>C:</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="text" name="c{{i}}" placeholder="Enter option C" required><br>
+                <label>D:</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="text" name="d{{i}}" placeholder="Enter option D" required><br>
+                <label>Enter Correct Answer:</label><br>
+                <input type="radio" name="ans{{i}}" value="A" required> A&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="radio" name="ans{{i}}" value="B" required> B&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="radio" name="ans{{i}}" value="C" required> C&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="radio" name="ans{{i}}" value="D" required> D&nbsp;&nbsp;&nbsp;&nbsp;
+                {% endfor %}
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+        <div class="col-3"></div>
+
+    </div>
+    
+    
+    <div id="fb-root">
+        <!-- Posts -->
+        {% for i in data %}
+        <div class="col-12">
+                {{ i.question }} <br>
+                {{ i.email }} <br>
+                {{ i.dt }} <br>
+                {{ i.imgname }}<br>
+                <a href="/admreply?qid={{i.id}}">Reply</a><br>
+                <a href="/admviewanswer?qid={{i.id}}">View Answer</a>
+                <a href="/delques?qid={{i.id}}">Delete</a>
+        </div>
+        <div class="fb-comments" data-href="http://localhost:8000/stddiscussion" data-numposts="5" data-width=""></div>
+        {% endfor %}
+    </div>
+    <!-- <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v7.0" nonce="jCHrENZm"></script> -->
+</div>
+{% endblock %}

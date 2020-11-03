@@ -1,0 +1,75 @@
+{% extends 'shared/examCommon.html' %}
+{% block content %}
+{% load static %}
+<script type="text/javascript">
+    //code for count down autosubmit.....
+    function auto_submit() {
+        window.setTimeout("document.myQp.submit()", 1200002);
+        window.setTimeout(function () {
+            alert("Ooops! Time up..... ");
+        }, 1200002);
+    }
+    // set minutes
+    var mins = 20;
+
+    // calculate the seconds (don't change this! unless time progresses at a different speed for you...)
+    var secs = mins * 60;
+    function countdown() {
+        setTimeout('Decrement()', 1000);
+    }
+    function Decrement() {
+        if (document.getElementById) {
+            minutes = document.getElementById("minutes");
+            seconds = document.getElementById("seconds");
+            // if less than a minute remaining
+            if (seconds < 59) {
+                seconds.value = secs;
+            } else {
+                minutes.value = getminutes();
+                seconds.value = getseconds();
+            }
+            secs--;
+            setTimeout('Decrement()', 1000);
+        }
+    }
+    function getminutes() {
+        // minutes is seconds divided by 60, rounded down
+        mins = Math.floor(secs / 60);
+        return mins;
+    }
+    function getseconds() {
+        // take mins remaining (as seconds) away from total seconds remaining
+        return secs - Math.round(mins * 60);
+    }
+</script>
+
+<script>
+    countdown();
+</script>
+
+<div class="row" style="background: #002147;">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8 bg-white my-5">
+        <h1 style="color: #fd6801;">Weakly Test</h1>
+        <form action="result" name="myQp" method="POST">
+            {% csrf_token %}
+            {% for i in questions %}
+            <label>{{ forloop.counter }}:- {{ i.question }}</label><br>
+            A. <label><input type="radio" name="{{ forloop.counter }}" value="A" /> {{ i.a }}</label><br>
+            B. <label><input type="radio" name="{{ forloop.counter }}" value="B" /> {{ i.b }}</label><br>
+            C. <label><input type="radio" name="{{ forloop.counter }}" value="C" /> {{ i.c }}</label><br>
+            D. <label><input type="radio" name="{{ forloop.counter }}" value="D" /> {{ i.d }}</label><br><br><br>
+            {% endfor %}
+            <input type="hidden" value="{{ tq }}" name="tq">
+            <input type="hidden" value="{{ paperid }}" name="paperid">
+            <button class="btn btn-success" type="submit">Submit</button><br /><br />
+        </form>
+    </div>
+    <div class="col-sm-2">
+        <span id="timer" class="text-white" style="color: white;font-size:20px;">
+            <input id="minutes" type="text" style="width: 30px; height:25px; border: none;"><span>:</span>
+            <input id="seconds" type="text" style="width: 30px; height:25px; border: none;">
+        </span>
+    </div>
+</div>
+{% endblock %}
