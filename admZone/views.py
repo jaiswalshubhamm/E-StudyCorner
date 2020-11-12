@@ -122,7 +122,7 @@ def sendEmail(request):
 
                 # Email Code.............
                 msg=MIMEMultipart()
-                pwd='aah@to@sahi'
+                pwd=''
                 msg['From']='shubhamjais1999@gmail.com'
                 msg['To']=to
                 msg['Subject']=subject
