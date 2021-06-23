@@ -1,3 +1,4 @@
+from django.http.response import HttpResponse
 from django.shortcuts import render
 from estudy.cryptography import Encryption
 from .models import AdmLogin, Notification, Email, SMS, QPDetails, ExamQuestion, Result, Upload
@@ -13,6 +14,13 @@ import urllib
 import random
 
 # Create your views here.
+def createAdmin(request):
+    email='admin@gmail.com'
+    pwd='12345678'
+    user=AdmLogin(email=email, pwd=pwd)
+    user.save()
+    return HttpResponse('User Created Sucessfully')
+
 def admLogin(request):
     return render(request, 'admLogin.html')
 
@@ -24,8 +32,8 @@ def validateAdminLogin(request):
     if request.method=='POST':
         email=request.POST['username']
         pwd=request.POST['password']
-        c=Encryption()
-        l=AdmLogin.objects.all().filter(email=email, pwd=c.encryptMyData(pwd))
+        # c=Encryption()
+        l=AdmLogin.objects.all().filter(email=email, pwd=pwd)
         count=0
         for i in l:
             count=count+1
